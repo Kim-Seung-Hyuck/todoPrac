@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.zerock.spring1.mapper.TodoMapper">
+
+    <select id="selectAll" resultType="org.zerock.spring1.dto.TodoDTO">
+        select * from tbl_todo2 where tno > 0 order by DATEDIFF(now(), dueDate) desc, tno desc limit  #{skip}, #{size}
+    </select>
+
+    <select id="listCount" resultType="int">
+        select count(tno) from tbl_todo2
+    </select>
+
+    <select id="selectOne" resultType="org.zerock.spring1.dto.TodoDTO">
+        select * from tbl_todo2 where tno = #{tno}
+    </select>
+
+    <insert id="insert">
+        insert into tbl_todo2 (title, memo, writer, dueDate)
+        values (#{title}, #{memo}, #{writer}, #{dueDate})
+    </insert>
+
+    <update id="update">
+        update tbl_todo2 set
+        title = #{title},
+        memo = #{memo},
+        writer =#{writer},
+        dueDate = #{dueDate},
+        complete = #{complete}
+        where tno = #{tno}
+    </update>
+
+    <delete id="delete">
+        delete from tbl_todo2 where tno = #{tno}
+    </delete>
+
+</mapper>

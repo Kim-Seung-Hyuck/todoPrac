@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration status="debug">
+
+    <Appenders>
+        <Console name="console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{yyyy-MM-dd hh:mm:ss} %5p [%c] %m%n"/>
+        </Console>
+    </Appenders>
+
+    <loggers>
+        <root level="debug" additivity="true">
+            <AppenderRef ref="console"/>
+        </root>
+        <logger level="debug" name="org.springframework" additivity="false">
+            <AppenderRef ref="console"/>
+        </logger>
+        <logger level="debug" name="org.springframework.web" additivity="false">
+            <AppenderRef ref="console"/>
+        </logger>
+    </loggers>
+
+</configuration>
